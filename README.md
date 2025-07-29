@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Personal - Francisco D'Alessandro
 
-## Getting Started
+Portfolio web moderno y responsive desarrollado con Next.js 15, React, TypeScript y Tailwind CSS.
 
-First, run the development server:
+## 🚀 Tecnologías Utilizadas
+
+- **Next.js 15** - Framework de React
+- **React 19** - Biblioteca de UI
+- **TypeScript** - Tipado estático
+- **Tailwind CSS** - Framework de CSS
+- **Formik** - Manejo de formularios
+- **Yup** - Validación de esquemas
+
+## ✨ Características
+
+- 🎨 **Diseño Moderno**: Tema oscuro con acentos cian
+- 📱 **Responsive**: Optimizado para todos los dispositivos
+- ⚡ **Performance**: Optimizado para velocidad
+- 🔒 **Seguro**: Headers de seguridad implementados
+- 🎯 **SEO**: Optimizado para motores de búsqueda
+- 🌐 **Deploy Ready**: Configurado para Vercel
+
+## 📋 Secciones
+
+1. **About Me**: Presentación personal con foto y descripción
+2. **Proyectos**: Portfolio de proyectos con tecnologías
+3. **Experiencia**: Timeline de experiencia laboral
+4. **Contacto**: Formulario de contacto funcional
+
+## 🛠️ Instalación
 
 ```bash
+# Clonar el repositorio
+git clone [URL_DEL_REPOSITORIO]
+
+# Entrar al directorio
+cd portfolio
+
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Deploy en Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Opción 1: Deploy Automático
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Conecta tu repositorio de GitHub a Vercel
+2. Vercel detectará automáticamente que es un proyecto Next.js
+3. El deploy se realizará automáticamente
 
-## Learn More
+### Opción 2: Deploy Manual
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Instalar Vercel CLI
+npm i -g vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Login en Vercel
+vercel login
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Deploy
+vercel --prod
+```
 
-## Deploy on Vercel
+## 📁 Estructura del Proyecto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+portfolio/
+├── src/
+│   ├── app/
+│   │   └── page.tsx          # Página principal
+│   └── components/
+│       ├── AboutMe.tsx       # Sección About Me
+│       ├── Projects.tsx      # Sección Proyectos
+│       ├── Experience.tsx    # Sección Experiencia
+│       ├── Contact.tsx       # Sección Contacto
+│       ├── Navbar.tsx        # Navegación
+│       └── Body.tsx          # Contenedor principal
+├── public/
+│   ├── desktop-bg.svg        # Imagen de fondo
+│   ├── CV_Francisco_DAlessandr.pdf
+│   └── [otras imágenes]
+├── next.config.js            # Configuración Next.js
+├── vercel.json              # Configuración Vercel
+└── package.json
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Personalización
+
+### Colores
+
+- **Primario**: Cyan (`#06b6d4`)
+- **Fondo**: Gris oscuro (`#111827`)
+- **Texto**: Blanco y gris claro
+
+### Imágenes
+
+- Reemplaza las imágenes en `/public/`
+- Ajusta las rutas en los componentes
+- Optimiza las imágenes para web
+
+## 📧 Contacto
+
+- **Email**: franciscojdalessandro@gmail.com
+- **LinkedIn**: [Francisco D'Alessandro](https://www.linkedin.com/in/francisco-dalessandro)
+- **GitHub**: [FJDalessandro](https://github.com/FJDalessandro)
+
+## 📄 Licencia
+
+Este proyecto es de uso personal. Todos los derechos reservados.
+
+---
+
+Desarrollado con ❤️ por Francisco D'Alessandro
