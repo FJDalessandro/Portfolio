@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+    const [submitMessage, setSubmitMessage] = useState("");
+
     const validationSchema = Yup.object({
         name: Yup.string().min(2, "El nombre debe tener al menos 2 caracteres").required("El nombre es requerido"),
         email: Yup.string().email("Email inválido").required("El email es requerido"),
@@ -12,19 +16,40 @@ const Contact = () => {
         message: Yup.string().min(10, "El mensaje debe tener al menos 10 caracteres").required("El mensaje es requerido"),
     });
 
-    const handleSubmit = (
+    const handleSubmit = async (
         values: { name: string; email: string; subject: string; message: string },
         { setSubmitting, resetForm }: { setSubmitting: (isSubmitting: boolean) => void; resetForm: () => void },
     ) => {
-        // Aquí puedes agregar la lógica para enviar el formulario
-        console.log("Formulario enviado:", values);
+        try {
+            setSubmitStatus("idle");
 
-        // Simular envío
-        setTimeout(() => {
-            alert("¡Mensaje enviado con éxito!");
-            setSubmitting(false);
+            // Configurar EmailJS
+            const templateParams = {
+                user_name: values.name,
+                user_email: values.email,
+                user_subject: values.subject,
+                user_message: values.message,
+            };
+
+            // Enviar email usando EmailJS
+            await emailjs.send(
+                "service_gl1u3h1", // Service ID
+                "template_xc1eokk", // Template ID
+                templateParams,
+                "Jfy_SZdeshnAyVqBB", // User ID (Public Key)
+            );
+
+            // Éxito
+            setSubmitStatus("success");
+            setSubmitMessage("¡Mensaje enviado con éxito! Te responderé pronto.");
             resetForm();
-        }, 1000);
+        } catch (error) {
+            console.error("Error al enviar el email:", error);
+            setSubmitStatus("error");
+            setSubmitMessage("Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -125,6 +150,19 @@ const Contact = () => {
                     {/* Formulario de contacto */}
                     <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-8 border border-gray-700">
                         <h3 className="text-2xl font-semibold text-white mb-6">Envíame un mensaje</h3>
+
+                        {/* Mensaje de estado */}
+                        {submitStatus === "success" && (
+                            <div className="mb-6 p-4 bg-green-900/50 border border-green-600 rounded-lg">
+                                <p className="text-green-300">{submitMessage}</p>
+                            </div>
+                        )}
+
+                        {submitStatus === "error" && (
+                            <div className="mb-6 p-4 bg-red-900/50 border border-red-600 rounded-lg">
+                                <p className="text-red-300">{submitMessage}</p>
+                            </div>
+                        )}
 
                         <Formik
                             initialValues={{
