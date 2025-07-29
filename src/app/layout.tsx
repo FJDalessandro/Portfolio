@@ -1,33 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 export const metadata: Metadata = {
     title: "Francisco D'Alessandro - Portfolio",
-    description: "Desarrollador Web Full Stack. Portfolio personal con proyectos, experiencia y contacto.",
-    keywords: ["desarrollador", "full stack", "react", "next.js", "typescript", "portfolio"],
+    description: "Portfolio personal de Francisco D'Alessandro, Desarrollador Full Stack especializado en React, Next.js, TypeScript y Node.js. Proyectos, experiencia y contacto.",
+    keywords: "Francisco D'Alessandro, Full Stack Developer, React, Next.js, TypeScript, Node.js, Portfolio, Web Development",
     authors: [{ name: "Francisco D'Alessandro" }],
-    creator: "Francisco D'Alessandro",
     openGraph: {
         title: "Francisco D'Alessandro - Portfolio",
-        description: "Desarrollador Web Full Stack. Portfolio personal con proyectos, experiencia y contacto.",
+        description: "Portfolio personal de Francisco D'Alessandro, Desarrollador Full Stack",
         type: "website",
         locale: "es_ES",
     },
     twitter: {
         card: "summary_large_image",
         title: "Francisco D'Alessandro - Portfolio",
-        description: "Desarrollador Web Full Stack. Portfolio personal con proyectos, experiencia y contacto.",
+        description: "Portfolio personal de Francisco D'Alessandro, Desarrollador Full Stack",
     },
     robots: {
         index: true,
@@ -42,7 +31,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="es">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+            <body>
+                <LanguageProvider>{children}</LanguageProvider>
+            </body>
         </html>
     );
 }

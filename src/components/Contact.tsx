@@ -4,16 +4,20 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/translations/translations";
 
 const Contact = () => {
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
     const [submitMessage, setSubmitMessage] = useState("");
+    const { language } = useLanguage();
+    const t = translations[language];
 
     const validationSchema = Yup.object({
-        name: Yup.string().min(2, "El nombre debe tener al menos 2 caracteres").required("El nombre es requerido"),
-        email: Yup.string().email("Email inválido").required("El email es requerido"),
-        subject: Yup.string().min(5, "El asunto debe tener al menos 5 caracteres").required("El asunto es requerido"),
-        message: Yup.string().min(10, "El mensaje debe tener al menos 10 caracteres").required("El mensaje es requerido"),
+        name: Yup.string().min(2, t.contact.validation.nameMin).required(t.contact.validation.nameRequired),
+        email: Yup.string().email(t.contact.validation.emailInvalid).required(t.contact.validation.emailRequired),
+        subject: Yup.string().min(5, t.contact.validation.subjectMin).required(t.contact.validation.subjectRequired),
+        message: Yup.string().min(10, t.contact.validation.messageMin).required(t.contact.validation.messageRequired),
     });
 
     const handleSubmit = async (
@@ -41,12 +45,12 @@ const Contact = () => {
 
             // Éxito
             setSubmitStatus("success");
-            setSubmitMessage("¡Mensaje enviado con éxito! Te responderé pronto.");
+            setSubmitMessage(t.contact.form.success);
             resetForm();
         } catch (error) {
             console.error("Error al enviar el email:", error);
             setSubmitStatus("error");
-            setSubmitMessage("Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.");
+            setSubmitMessage(t.contact.form.error);
         } finally {
             setSubmitting(false);
         }
@@ -56,18 +60,16 @@ const Contact = () => {
         <section id="contact" className="py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-white mb-4">Contacto</h2>
-                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-                        ¿Tienes un proyecto en mente? ¿Quieres trabajar juntos? No dudes en contactarme, estaré encantado de escuchar tu propuesta.
-                    </p>
+                    <h2 className="text-3xl font-bold text-white mb-4">{t.contact.title}</h2>
+                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">{t.contact.subtitle}</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative">
                     {/* Información de contacto */}
                     <div className="space-y-8">
                         <div>
-                            <h3 className="text-2xl font-semibold text-white mb-6">Información de Contacto</h3>
-                            <p className="text-gray-300 mb-8">Puedes contactarme a través de cualquiera de estos medios. Respondo a todos los mensajes en menos de 24 horas.</p>
+                            <h3 className="text-2xl font-semibold text-white mb-6">{t.contact.contactInfo}</h3>
+                            <p className="text-gray-300 mb-8">{t.contact.contactDescription}</p>
                         </div>
 
                         <div className="space-y-6">
@@ -84,7 +86,7 @@ const Contact = () => {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-white">Email</h4>
+                                    <h4 className="font-semibold text-white">{t.contact.email}</h4>
                                     <p className="text-gray-300">franciscojdalessandro@gmail.com</p>
                                 </div>
                             </div>
@@ -103,15 +105,15 @@ const Contact = () => {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-white">Ubicación</h4>
-                                    <p className="text-gray-300">Barcelona, España</p>
+                                    <h4 className="font-semibold text-white">{t.contact.location}</h4>
+                                    <p className="text-gray-300">{t.contact.locationValue}</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Redes sociales */}
                         <div>
-                            <h4 className="font-semibold text-white mb-4">Sígueme en:</h4>
+                            <h4 className="font-semibold text-white mb-4">{t.contact.followMe}</h4>
                             <div className="flex space-x-4">
                                 <a
                                     href="https://x.com/fjdalessandro?s=21&t=iLV85cJd3Izpuvn6s9qWaA"
@@ -149,7 +151,7 @@ const Contact = () => {
 
                     {/* Formulario de contacto */}
                     <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-8 border border-gray-700">
-                        <h3 className="text-2xl font-semibold text-white mb-6">Envíame un mensaje</h3>
+                        <h3 className="text-2xl font-semibold text-white mb-6">{t.contact.sendMessage}</h3>
 
                         {/* Mensaje de estado */}
                         {submitStatus === "success" && (
@@ -178,49 +180,49 @@ const Contact = () => {
                                 <Form className="space-y-6">
                                     <div>
                                         <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                                            Nombre completo
+                                            {t.contact.form.name}
                                         </label>
                                         <Field
                                             type="text"
                                             id="name"
                                             name="name"
                                             className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors bg-gray-700/80 backdrop-blur-sm text-white placeholder-gray-400"
-                                            placeholder="Tu nombre completo"
+                                            placeholder={t.contact.form.namePlaceholder}
                                         />
                                         <ErrorMessage name="name" component="div" className="text-red-500 text-sm mt-1" />
                                     </div>
 
                                     <div>
                                         <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                                            Email
+                                            {t.contact.form.email}
                                         </label>
                                         <Field
                                             type="email"
                                             id="email"
                                             name="email"
                                             className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors bg-gray-700/80 backdrop-blur-sm text-white placeholder-gray-400"
-                                            placeholder="tu.email@ejemplo.com"
+                                            placeholder={t.contact.form.emailPlaceholder}
                                         />
                                         <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
                                     </div>
 
                                     <div>
                                         <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                                            Asunto
+                                            {t.contact.form.subject}
                                         </label>
                                         <Field
                                             type="text"
                                             id="subject"
                                             name="subject"
                                             className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors bg-gray-700/80 backdrop-blur-sm text-white placeholder-gray-400"
-                                            placeholder="¿En qué puedo ayudarte?"
+                                            placeholder={t.contact.form.subjectPlaceholder}
                                         />
                                         <ErrorMessage name="subject" component="div" className="text-red-500 text-sm mt-1" />
                                     </div>
 
                                     <div>
                                         <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                                            Mensaje
+                                            {t.contact.form.message}
                                         </label>
                                         <Field
                                             as="textarea"
@@ -228,7 +230,7 @@ const Contact = () => {
                                             name="message"
                                             rows={5}
                                             className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors resize-none bg-gray-700/80 backdrop-blur-sm text-white placeholder-gray-400"
-                                            placeholder="Cuéntame más sobre tu proyecto..."
+                                            placeholder={t.contact.form.messagePlaceholder}
                                         />
                                         <ErrorMessage name="message" component="div" className="text-red-500 text-sm mt-1" />
                                     </div>
@@ -238,7 +240,7 @@ const Contact = () => {
                                         disabled={isSubmitting}
                                         className="w-full px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+                                        {isSubmitting ? t.contact.form.sending : t.contact.form.send}
                                     </button>
                                 </Form>
                             )}

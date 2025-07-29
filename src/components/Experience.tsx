@@ -1,38 +1,37 @@
+"use client";
+
 import React from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/translations/translations";
 
 const Experience = () => {
+    const { language } = useLanguage();
+    const t = translations[language];
+
     const experiences = [
         {
             id: 1,
-            company: "SIPMA",
-            position: "FullStack Developer",
-            period: "Julio 2025 - Presente",
-            description:
-                "Desarrollo full stack en una empresa innovadora. Me uní a un equipo talentoso para enfrentar nuevos desafíos y contribuir con lo mejor de mí a cada proyecto.",
-            technologies: ["HTML5", "CSS", "JavaScript", "React", "Node.js", "TypeScript"],
-            achievements: ["Integración exitosa al equipo de desarrollo", "Contribución activa en proyectos empresariales", "Desarrollo de soluciones full stack"],
+            title: t.experience.sipma.title,
+            period: t.experience.sipma.period,
+            description: t.experience.sipma.description,
+            technologies: t.experience.sipma.technologies,
+            achievements: t.experience.sipma.achievements,
         },
         {
             id: 2,
-            company: "Henry",
-            position: "Teaching Assistant",
-            period: "Abril 2025 - Mayo 2025",
-            description: "Coordiné un grupo de estudiantes para integrarlos al equipo de estudio, asistí en la resolución de ejercicios y promoví la colaboración grupal.",
-            technologies: ["React.js", "JavaScript", "Node.js", "Soft Skills", "Mentoring"],
-            achievements: ["Coordinación exitosa de grupos de estudiantes", "Asistencia en resolución de ejercicios", "Propuesta de ideas para mejorar procesos del Bootcamp"],
+            title: t.experience.henry.title,
+            period: t.experience.henry.period,
+            description: t.experience.henry.description,
+            technologies: t.experience.henry.technologies,
+            achievements: t.experience.henry.achievements,
         },
         {
             id: 3,
-            company: "Formación Intensiva",
-            position: "Estudiante Full Stack Developer",
-            period: "Enero 2025 - Mayo 2025",
-            description: "Dedicación de tiempo completo al estudio de la carrera Full-Stack Developer en Henry, adquiriendo conocimientos sólidos en tecnologías modernas.",
-            technologies: ["JavaScript", "Next.js", "TailwindCSS", "Node.js", "MongoDB", "Git", "GitHub", "React", "TypeScript", "TypeORM", "PostgreSQL"],
-            achievements: [
-                "Completé exitosamente el bootcamp de 14 semanas",
-                "Desarrollé proyectos integradores completos",
-                "Adquirí experiencia práctica en tecnologías modernas",
-            ],
+            title: t.experience.bootcamp.title,
+            period: t.experience.bootcamp.period,
+            description: t.experience.bootcamp.description,
+            technologies: t.experience.bootcamp.technologies,
+            achievements: t.experience.bootcamp.achievements,
         },
     ];
 
@@ -40,85 +39,63 @@ const Experience = () => {
         <section id="experience" className="py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-white mb-4">Experiencia Laboral</h2>
-                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">Mi trayectoria profesional y las empresas donde he contribuido con mis habilidades y conocimientos.</p>
+                    <h2 className="text-3xl font-bold text-white mb-4">{t.experience.title}</h2>
+                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">{t.experience.subtitle}</p>
                 </div>
 
-                <div className="space-y-8">
-                    {experiences.map((experience, index) => (
-                        <div key={experience.id} className="relative">
-                            {/* Línea de tiempo */}
-                            {index < experiences.length - 1 && <div className="absolute left-8 top-16 bottom-0 w-0.5 bg-cyan-400"></div>}
+                <div className="relative">
+                    {/* Línea de tiempo */}
+                    <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-cyan-400"></div>
 
-                            <div className="flex items-start space-x-6">
+                    <div className="space-y-12">
+                        {experiences.map((experience, index) => (
+                            <div key={experience.id} className="relative flex items-start">
                                 {/* Círculo de la línea de tiempo */}
-                                <div className="flex-shrink-0">
-                                    <div className="w-16 h-16 bg-cyan-600 rounded-full flex items-center justify-center shadow-lg">
-                                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
-                                                clipRule="evenodd"
-                                            />
-                                            <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
-                                        </svg>
-                                    </div>
-                                </div>
+                                <div className="absolute left-6 w-4 h-4 bg-cyan-600 rounded-full border-4 border-gray-900 z-10"></div>
 
-                                {/* Contenido de la experiencia */}
-                                <div className="flex-1 bg-gray-900/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-700">
-                                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                                        <div>
-                                            <h3 className="text-xl font-semibold text-white">{experience.position}</h3>
-                                            <p className="text-lg font-medium text-cyan-400">{experience.company}</p>
+                                {/* Contenido */}
+                                <div className="ml-16 flex-1">
+                                    <div className="bg-gray-900/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-700 hover:border-cyan-400 transition-all duration-300">
+                                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                            <h3 className="text-xl font-semibold text-cyan-400 mb-2 lg:mb-0">{experience.title}</h3>
+                                            <span className="px-3 py-1 bg-gray-700 text-gray-300 text-sm rounded-full">{experience.period}</span>
                                         </div>
-                                        <span className="text-sm font-medium text-gray-300 bg-gray-700 px-3 py-1 rounded-full mt-2 md:mt-0">{experience.period}</span>
-                                    </div>
 
-                                    <p className="text-gray-300 mb-4">{experience.description}</p>
+                                        <p className="text-gray-300 mb-4 leading-relaxed">{experience.description}</p>
 
-                                    {/* Tecnologías */}
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                        {experience.technologies.map((tech, techIndex) => (
-                                            <span key={techIndex} className="px-2 py-1 bg-gray-700 text-cyan-400 text-xs rounded-full font-medium border border-gray-600">
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
+                                        {/* Tecnologías */}
+                                        <div className="mb-4">
+                                            <h4 className="text-sm font-semibold text-white mb-2">Tecnologías:</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {experience.technologies.split(", ").map((tech, techIndex) => (
+                                                    <span key={techIndex} className="px-2 py-1 bg-gray-700 text-cyan-400 text-xs font-medium rounded border border-gray-600">
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
 
-                                    {/* Logros */}
-                                    <div>
-                                        <h4 className="font-semibold text-white mb-2">Logros principales:</h4>
-                                        <ul className="space-y-1">
-                                            {experience.achievements.map((achievement, achievementIndex) => (
-                                                <li key={achievementIndex} className="flex items-start">
-                                                    <svg className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path
-                                                            fillRule="evenodd"
-                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                            clipRule="evenodd"
-                                                        />
-                                                    </svg>
-                                                    <span className="text-sm text-gray-300">{achievement}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        {/* Logros */}
+                                        <div>
+                                            <h4 className="text-sm font-semibold text-white mb-2">Logros:</h4>
+                                            <p className="text-gray-300 text-sm leading-relaxed">{experience.achievements}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
-                {/* Botón para descargar CV */}
+                {/* Botón para descargar CV completo */}
                 <div className="text-center mt-12">
                     <a
                         href="/CV_Francisco_DAlessandr.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-8 py-3 bg-transparent text-white border border-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200 inline-block"
+                        className="inline-flex items-center px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-300"
                     >
-                        Descargar CV Completo
+                        {t.experience.downloadFullCV}
                     </a>
                 </div>
             </div>
