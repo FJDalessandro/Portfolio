@@ -35,7 +35,7 @@ const nextConfig = {
 
     // Optimizaciones de compilación
     experimental: {
-        optimizeCss: true,
+        optimizeCss: false,
     },
 
     // Configuración de TypeScript
