@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Optimizaciones para producción
-    output: "standalone",
+    // Configuración para Vercel
 
     // Configuración de imágenes
     images: {
@@ -33,7 +32,7 @@ const nextConfig = {
         ];
     },
 
-    // Optimizaciones de compilación
+    // Configuración experimental
     experimental: {
         optimizeCss: false,
     },
