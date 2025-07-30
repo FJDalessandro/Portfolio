@@ -28,62 +28,6 @@ Portfolio personal desarrollado con Next.js, React, TypeScript y Tailwind CSS.
 3. **Experiencia** - Timeline de experiencia laboral
 4. **Contacto** - Formulario de contacto y redes sociales
 
-## 🛠️ Instalación
-
-```bash
-# Clonar el repositorio
-git clone [URL_DEL_REPOSITORIO]
-
-# Instalar dependencias
-npm install
-
-# Ejecutar en desarrollo
-npm run dev
-
-# Construir para producción
-npm run build
-```
-
-## 🌐 Deploy en Vercel
-
-El proyecto está configurado para deploy automático en Vercel:
-
-1. **Conectar repositorio** a Vercel
-2. **Configuración automática** detectada
-3. **Deploy automático** en cada push
-
-### Configuración de Vercel:
-
-- **Framework Preset**: Next.js
-- **Build Command**: `npm run build`
-- **Output Directory**: `.next`
-- **Install Command**: `npm install`
-
-## 📁 Estructura del Proyecto
-
-```
-portfolio/
-├── src/
-│   ├── app/
-│   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   └── components/
-│       ├── AboutMe.tsx
-│       ├── Body.tsx
-│       ├── Contact.tsx
-│       ├── Experience.tsx
-│       ├── Navbar.tsx
-│       └── Projects.tsx
-├── public/
-│   ├── desktop-bg.svg
-│   ├── CV_Francisco_DAlessandr.pdf
-│   └── [imágenes de proyectos]
-├── tailwind.config.js
-├── postcss.config.mjs
-├── next.config.js
-├── vercel.json
-└── package.json
 ```
 
 ## 🎨 Personalización
@@ -162,4 +106,4 @@ El portfolio está optimizado para:
 
 ---
 
-**Desarrollado con ❤️ por Francisco D'Alessandro**
+**Desarrollado por Francisco D'Alessandro**
