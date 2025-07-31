@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import emailjs from "@emailjs/browser";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/translations/translations";
 
@@ -27,28 +26,34 @@ const Contact = () => {
         try {
             setSubmitStatus("idle");
 
-            // Configurar EmailJS
-            const templateParams = {
-                user_name: values.name,
-                user_email: values.email,
-                user_subject: values.subject,
-                user_message: values.message,
-            };
+            // Enviar datos a la API route protegida
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: values.name,
+                    email: values.email,
+                    subject: values.subject,
+                    message: values.message,
+                }),
+            });
 
-            // Enviar email usando EmailJS
-            await emailjs.send(
-                "service_gl1u3h1", // Service ID
-                "template_xc1eokk", // Template ID
-                templateParams,
-                "Jfy_SZdeshnAyVqBB", // User ID (Public Key)
-            );
+            const data = await response.json();
 
-            // Éxito
-            setSubmitStatus("success");
-            setSubmitMessage(t.contact.form.success);
-            resetForm();
+            if (response.ok) {
+                // Éxito
+                setSubmitStatus("success");
+                setSubmitMessage(t.contact.form.success);
+                resetForm();
+            } else {
+                // Error del servidor
+                setSubmitStatus("error");
+                setSubmitMessage(data.error || t.contact.form.error);
+            }
         } catch (error) {
-            console.error("Error al enviar el email:", error);
+            console.error("Error al enviar el formulario:", error);
             setSubmitStatus("error");
             setSubmitMessage(t.contact.form.error);
         } finally {
