@@ -1,7 +1,17 @@
+import createMiddleware from "next-intl/middleware";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { locales, defaultLocale } from "../../i18n";
 
-export function middleware(request: NextRequest) {
+// Middleware de i18n
+const intlMiddleware = createMiddleware({
+    locales,
+    defaultLocale,
+    localePrefix: "as-needed",
+});
+
+// Middleware de seguridad
+function securityMiddleware(request: NextRequest) {
     // Obtener la respuesta
     const response = NextResponse.next();
 
@@ -53,6 +63,20 @@ export function middleware(request: NextRequest) {
     return response;
 }
 
+// Middleware principal que combina i18n y seguridad
+export default function middleware(request: NextRequest) {
+    // Aplicar middleware de seguridad primero
+    const securityResponse = securityMiddleware(request);
+
+    // Si hay una respuesta de seguridad (error), devolverla
+    if (securityResponse.status !== 200) {
+        return securityResponse;
+    }
+
+    // Aplicar middleware de i18n
+    return intlMiddleware(request);
+}
+
 export const config = {
     matcher: [
         /*
@@ -61,7 +85,8 @@ export const config = {
          * - _next/image (image optimization files)
          * - favicon.ico (favicon file)
          * - public folder
+         * - api routes
          */
-        "/((?!_next/static|_next/image|favicon.ico|public/).*)",
+        "/((?!_next/static|_next/image|favicon.ico|public/|api/).*)",
     ],
 };

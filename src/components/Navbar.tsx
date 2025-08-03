@@ -1,14 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/translations/translations";
+import { useTranslations } from "next-intl";
 import LanguageToggle from "./LanguageToggle";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { language } = useLanguage();
-    const t = translations[language];
+    const t = useTranslations("nav");
 
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
@@ -34,25 +32,25 @@ const Navbar = () => {
                                 onClick={() => scrollToSection("about")}
                                 className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                             >
-                                {t.nav.about}
+                                {t("about")}
                             </button>
                             <button
                                 onClick={() => scrollToSection("projects")}
                                 className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                             >
-                                {t.nav.projects}
+                                {t("projects")}
                             </button>
                             <button
                                 onClick={() => scrollToSection("experience")}
                                 className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                             >
-                                {t.nav.experience}
+                                {t("experience")}
                             </button>
                             <button
                                 onClick={() => scrollToSection("contact")}
                                 className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                             >
-                                {t.nav.contact}
+                                {t("contact")}
                             </button>
                         </div>
                     </div>
@@ -92,25 +90,25 @@ const Navbar = () => {
                             onClick={() => scrollToSection("about")}
                             className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                         >
-                            {t.nav.about}
+                            {t("about")}
                         </button>
                         <button
                             onClick={() => scrollToSection("projects")}
                             className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                         >
-                            {t.nav.projects}
+                            {t("projects")}
                         </button>
                         <button
                             onClick={() => scrollToSection("experience")}
                             className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                         >
-                            {t.nav.experience}
+                            {t("experience")}
                         </button>
                         <button
                             onClick={() => scrollToSection("contact")}
                             className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                         >
-                            {t.nav.contact}
+                            {t("contact")}
                         </button>
                     </div>
                 </div>

@@ -1,0 +1,106 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "experience": "Experience",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "greeting": "Hello! I'm",
+        "name": "Francisco D'Alessandro",
+        "title": "Full Stack Developer",
+        "description": "Passionate about creating innovative digital experiences and technological solutions that make a difference.",
+        "cta": "View Projects",
+        "scroll": "Scroll to explore"
+    },
+    "about": {
+        "title": "About Me",
+        "subtitle": "Learn about my story and passion for development",
+        "description": "I'm a Full Stack developer passionate about creating innovative technological solutions. With experience in modern technologies like React, Node.js, and Python, I specialize in building scalable web applications and exceptional user experiences.",
+        "skills": "Technical Skills",
+        "skillsDescription": "Technologies and tools I use to create digital solutions",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "database": "Database",
+        "tools": "Tools",
+        "languages": "Languages",
+        "spanish": "Spanish",
+        "english": "English",
+        "spanishLevel": "Native",
+        "englishLevel": "Advanced"
+    },
+    "experience": {
+        "title": "Experience",
+        "subtitle": "My professional journey and achievements",
+        "current": "Current",
+        "present": "Present",
+        "months": "months",
+        "years": "years",
+        "year": "year",
+        "month": "month"
+    },
+    "projects": {
+        "title": "Projects",
+        "subtitle": "Some of my most outstanding works",
+        "viewProject": "View Project",
+        "viewCode": "View Code",
+        "technologies": "Technologies",
+        "description": "Description",
+        "features": "Features"
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Have a project in mind? Let's talk!",
+        "contactInfo": "Contact Information",
+        "contactDescription": "I'm always open to new opportunities and collaborations. Don't hesitate to contact me.",
+        "email": "Email",
+        "location": "Location",
+        "locationValue": "Buenos Aires, Argentina",
+        "followMe": "Follow Me",
+        "sendMessage": "Send Message",
+        "form": {
+            "name": "Name",
+            "namePlaceholder": "Your full name",
+            "email": "Email",
+            "emailPlaceholder": "your@email.com",
+            "subject": "Subject",
+            "subjectPlaceholder": "How can I help you?",
+            "message": "Message",
+            "messagePlaceholder": "Tell me about your project...",
+            "send": "Send Message",
+            "sending": "Sending...",
+            "success": "Message sent successfully! I'll get back to you soon.",
+            "error": "Error sending message. Please try again."
+        },
+        "validation": {
+            "nameRequired": "Name is required",
+            "nameMin": "Name must be at least 2 characters",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Invalid email",
+            "subjectRequired": "Subject is required",
+            "subjectMin": "Subject must be at least 5 characters",
+            "messageRequired": "Message is required",
+            "messageMin": "Message must be at least 10 characters"
+        }
+    },
+    "footer": {
+        "madeWith": "Made with",
+        "by": "by",
+        "rights": "All rights reserved"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "close": "Close",
+        "save": "Save",
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "delete": "Delete",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "language": "Language"
+    }
+}

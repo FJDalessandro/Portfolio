@@ -1,0 +1,106 @@
+{
+    "nav": {
+        "home": "Inicio",
+        "about": "Sobre mí",
+        "experience": "Experiencia",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    },
+    "hero": {
+        "greeting": "¡Hola! Soy",
+        "name": "Francisco D'Alessandro",
+        "title": "Desarrollador Full Stack",
+        "description": "Apasionado por crear experiencias digitales innovadoras y soluciones tecnológicas que marcan la diferencia.",
+        "cta": "Ver Proyectos",
+        "scroll": "Desplázate para explorar"
+    },
+    "about": {
+        "title": "Sobre Mí",
+        "subtitle": "Conoce mi historia y pasión por el desarrollo",
+        "description": "Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas innovadoras. Con experiencia en tecnologías modernas como React, Node.js, y Python, me especializo en construir aplicaciones web escalables y experiencias de usuario excepcionales.",
+        "skills": "Habilidades Técnicas",
+        "skillsDescription": "Tecnologías y herramientas que utilizo para crear soluciones digitales",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "database": "Base de Datos",
+        "tools": "Herramientas",
+        "languages": "Idiomas",
+        "spanish": "Español",
+        "english": "Inglés",
+        "spanishLevel": "Nativo",
+        "englishLevel": "Avanzado"
+    },
+    "experience": {
+        "title": "Experiencia",
+        "subtitle": "Mi trayectoria profesional y logros",
+        "current": "Actual",
+        "present": "Presente",
+        "months": "meses",
+        "years": "años",
+        "year": "año",
+        "month": "mes"
+    },
+    "projects": {
+        "title": "Proyectos",
+        "subtitle": "Algunos de mis trabajos más destacados",
+        "viewProject": "Ver Proyecto",
+        "viewCode": "Ver Código",
+        "technologies": "Tecnologías",
+        "description": "Descripción",
+        "features": "Características"
+    },
+    "contact": {
+        "title": "Contacto",
+        "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos!",
+        "contactInfo": "Información de Contacto",
+        "contactDescription": "Estoy siempre abierto a nuevas oportunidades y colaboraciones. No dudes en contactarme.",
+        "email": "Email",
+        "location": "Ubicación",
+        "locationValue": "Buenos Aires, Argentina",
+        "followMe": "Sígueme",
+        "sendMessage": "Enviar Mensaje",
+        "form": {
+            "name": "Nombre",
+            "namePlaceholder": "Tu nombre completo",
+            "email": "Email",
+            "emailPlaceholder": "tu@email.com",
+            "subject": "Asunto",
+            "subjectPlaceholder": "¿En qué puedo ayudarte?",
+            "message": "Mensaje",
+            "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+            "send": "Enviar Mensaje",
+            "sending": "Enviando...",
+            "success": "¡Mensaje enviado exitosamente! Te responderé pronto.",
+            "error": "Error al enviar el mensaje. Intenta de nuevo."
+        },
+        "validation": {
+            "nameRequired": "El nombre es requerido",
+            "nameMin": "El nombre debe tener al menos 2 caracteres",
+            "emailRequired": "El email es requerido",
+            "emailInvalid": "Email inválido",
+            "subjectRequired": "El asunto es requerido",
+            "subjectMin": "El asunto debe tener al menos 5 caracteres",
+            "messageRequired": "El mensaje es requerido",
+            "messageMin": "El mensaje debe tener al menos 10 caracteres"
+        }
+    },
+    "footer": {
+        "madeWith": "Hecho con",
+        "by": "por",
+        "rights": "Todos los derechos reservados"
+    },
+    "common": {
+        "loading": "Cargando...",
+        "error": "Error",
+        "success": "Éxito",
+        "close": "Cerrar",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "back": "Volver",
+        "next": "Siguiente",
+        "previous": "Anterior",
+        "language": "Idioma"
+    }
+}
