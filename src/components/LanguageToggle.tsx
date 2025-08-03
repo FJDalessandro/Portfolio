@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
-import { locales } from "../../i18n";
+import { locales } from "../../src/i18n/request";
 
 const LanguageToggle = () => {
     const locale = useLocale();

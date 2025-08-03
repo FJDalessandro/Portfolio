@@ -4,7 +4,7 @@ import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { locales } from "../../../i18n";
+import { locales, type Locale } from "../../../src/i18n/request";
 import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -45,12 +45,13 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
     children: React.ReactNode;
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }
 
-export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
+export default async function RootLayout({ children, params }: RootLayoutProps) {
+    const { locale } = await params;
     // Validar que el locale sea soportado
-    if (!locales.includes(locale as any)) {
+    if (!locales.includes(locale as Locale)) {
         notFound();
     }
 

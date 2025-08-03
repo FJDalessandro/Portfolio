@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Obtener IP del cliente
-        const ip = request.ip || request.headers.get("x-forwarded-for") || "unknown";
+        const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "unknown";
 
         // Verificar rate limiting
         if (!checkRateLimit(ip)) {
@@ -84,11 +84,12 @@ export async function POST(request: NextRequest) {
         // Validar datos con Yup
         try {
             await contactSchema.validate(body, { abortEarly: false });
-        } catch (validationError: any) {
+        } catch (validationError: unknown) {
+            const errorDetails = validationError instanceof Error ? validationError.message : "Validation error";
             return NextResponse.json(
                 {
                     error: "Datos inválidos",
-                    details: validationError.errors,
+                    details: errorDetails,
                 },
                 { status: 400 },
             );
@@ -109,7 +110,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Enviar email usando EmailJS
-        const emailjs = require("@emailjs/nodejs");
+        const emailjs = await import("@emailjs/nodejs");
 
         const templateParams = {
             user_name: sanitizedData.name,
@@ -118,7 +119,7 @@ export async function POST(request: NextRequest) {
             user_message: sanitizedData.message,
         };
 
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
+        await emailjs.default.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
             publicKey: EMAILJS_USER_ID,
             privateKey: process.env.EMAILJS_PRIVATE_KEY, // Usar private key para mayor seguridad
         });
@@ -127,7 +128,7 @@ export async function POST(request: NextRequest) {
         console.log(`Email enviado exitosamente desde IP: ${ip}`);
 
         return NextResponse.json({ message: "Mensaje enviado exitosamente" }, { status: 200 });
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Error en API de contacto:", error);
 
         // No exponer detalles del error al cliente
