@@ -1,20 +1,15 @@
 #!/usr/bin/env node
 
-/**
- * Script de verificación de seguridad para el formulario de contacto
- * Ejecutar con: node scripts/security-check.js
- */
-
 const fs = require("fs");
 const path = require("path");
 
 console.log("🔍 Verificando configuración de seguridad...\n");
 
-// Verificar archivos necesarios
-const requiredFiles = ["src/app/api/contact/route.ts", "src/middleware.ts", "src/components/Contact.tsx"];
+// Verificar archivos de seguridad
+const securityFiles = ["src/app/api/contact/route.ts", "src/middleware.ts", "next.config.js", "package.json", "env.example", "SECURITY_SETUP.md"];
 
 console.log("📁 Verificando archivos de seguridad:");
-requiredFiles.forEach((file) => {
+securityFiles.forEach((file) => {
     if (fs.existsSync(file)) {
         console.log(`  ✅ ${file}`);
     } else {
@@ -25,11 +20,11 @@ requiredFiles.forEach((file) => {
 // Verificar variables de entorno
 console.log("\n🔐 Verificando variables de entorno:");
 const envFile = ".env.local";
+const requiredEnvVars = ["EMAILJS_SERVICE_ID", "EMAILJS_TEMPLATE_ID", "EMAILJS_USER_ID", "EMAILJS_PRIVATE_KEY"];
+
 if (fs.existsSync(envFile)) {
     const envContent = fs.readFileSync(envFile, "utf8");
-    const requiredVars = ["EMAILJS_SERVICE_ID", "EMAILJS_TEMPLATE_ID", "EMAILJS_USER_ID", "EMAILJS_PRIVATE_KEY"];
-
-    requiredVars.forEach((varName) => {
+    requiredEnvVars.forEach((varName) => {
         if (envContent.includes(varName)) {
             console.log(`  ✅ ${varName}`);
         } else {
@@ -41,12 +36,12 @@ if (fs.existsSync(envFile)) {
     console.log("  💡 Copia env.example a .env.local y configura las variables");
 }
 
-// Verificar dependencias
+// Verificar dependencias de seguridad
 console.log("\n📦 Verificando dependencias:");
 const packageJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
-const requiredDeps = ["@emailjs/nodejs", "yup"];
+const securityDeps = ["yup", "@emailjs/nodejs"];
 
-requiredDeps.forEach((dep) => {
+securityDeps.forEach((dep) => {
     if (packageJson.dependencies[dep] || packageJson.devDependencies[dep]) {
         console.log(`  ✅ ${dep}`);
     } else {
@@ -56,31 +51,33 @@ requiredDeps.forEach((dep) => {
 
 // Verificar configuración de EmailJS
 console.log("\n📧 Verificando configuración de EmailJS:");
-const contactComponent = fs.readFileSync("src/components/Contact.tsx", "utf8");
-if (contactComponent.includes("@emailjs/browser")) {
+if (packageJson.dependencies["@emailjs/browser"]) {
     console.log("  ⚠️  EmailJS browser aún presente - debe ser removido");
 } else {
     console.log("  ✅ EmailJS browser removido correctamente");
 }
 
-if (contactComponent.includes("/api/contact")) {
+if (fs.existsSync("src/app/api/contact/route.ts")) {
     console.log("  ✅ API route configurada correctamente");
 } else {
     console.log("  ❌ API route no configurada");
 }
 
-// Verificar middleware
-const middleware = fs.readFileSync("src/middleware.ts", "utf8");
-if (middleware.includes("Content-Security-Policy")) {
-    console.log("  ✅ CSP configurado");
-} else {
-    console.log("  ❌ CSP no configurado");
-}
+// Verificar headers de seguridad
+console.log("\n🛡️ Verificando headers de seguridad:");
+if (fs.existsSync("src/middleware.ts")) {
+    const middlewareContent = fs.readFileSync("src/middleware.ts", "utf8");
+    if (middlewareContent.includes("Content-Security-Policy")) {
+        console.log("  ✅ CSP configurado");
+    } else {
+        console.log("  ❌ CSP no configurado");
+    }
 
-if (middleware.includes("X-Content-Type-Options")) {
-    console.log("  ✅ Headers de seguridad configurados");
-} else {
-    console.log("  ❌ Headers de seguridad faltantes");
+    if (middlewareContent.includes("X-XSS-Protection")) {
+        console.log("  ✅ Headers de seguridad configurados");
+    } else {
+        console.log("  ❌ Headers de seguridad faltantes");
+    }
 }
 
 console.log("\n🎯 Resumen de seguridad:");

@@ -15,39 +15,54 @@
         "scroll": "Desplázate para explorar"
     },
     "about": {
-        "title": "Sobre Mí",
-        "subtitle": "Conoce mi historia y pasión por el desarrollo",
-        "description": "Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas innovadoras. Con experiencia en tecnologías modernas como React, Node.js, y Python, me especializo en construir aplicaciones web escalables y experiencias de usuario excepcionales.",
+        "title": "Francisco José D'Alessandro",
+        "subtitle": "Desarrollador Full Stack",
+        "description": "Soy un desarrollador Full Stack con formación intensiva en desarrollo web. Mi enfoque se centra en la resolución de problemas, el aprendizaje ágil, el pensamiento lógico y la autonomía tanto en el desarrollo Frontend como Backend. Utilizo tecnologías como React, Next.js, TypeScript, Node.js, Nest.js y MongoDB. Mi actitud proactiva, comunicación efectiva, trabajo en equipo y experiencia como Teacher Assistant me permiten desarrollar proyectos del mundo real, implementar testing automatizado, diseñar arquitecturas de software y realizar despliegues en producción.",
         "skills": "Habilidades Técnicas",
-        "skillsDescription": "Tecnologías y herramientas que utilizo para crear soluciones digitales",
-        "frontend": "Frontend",
-        "backend": "Backend",
-        "database": "Base de Datos",
-        "tools": "Herramientas",
-        "languages": "Idiomas",
-        "spanish": "Español",
-        "english": "Inglés",
-        "spanishLevel": "Nativo",
-        "englishLevel": "Avanzado"
+        "viewProjects": "Ver Proyectos",
+        "downloadCV": "Descargar CV"
     },
     "experience": {
         "title": "Experiencia",
         "subtitle": "Mi trayectoria profesional y logros",
-        "current": "Actual",
-        "present": "Presente",
-        "months": "meses",
-        "years": "años",
-        "year": "año",
-        "month": "mes"
+        "downloadFullCV": "Descargar CV Completo",
+        "sipma": {
+            "title": "Desarrollador Full Stack - SIPMA",
+            "period": "Enero 2024 - Presente",
+            "description": "Desarrollo de aplicaciones web completas utilizando tecnologías modernas.",
+            "technologies": "React, Node.js, TypeScript, MongoDB, Express",
+            "achievements": "Implementé nuevas funcionalidades que mejoraron la eficiencia del sistema en un 40%."
+        },
+        "henry": {
+            "title": "Teacher Assistant - Henry",
+            "period": "Septiembre 2023 - Diciembre 2023",
+            "description": "Asistencia en la enseñanza de desarrollo web y programación.",
+            "technologies": "JavaScript, React, Node.js, Express, PostgreSQL",
+            "achievements": "Ayudé a más de 50 estudiantes a completar exitosamente el bootcamp."
+        },
+        "bootcamp": {
+            "title": "Bootcamp Full Stack - Henry",
+            "period": "Marzo 2023 - Septiembre 2023",
+            "description": "Formación intensiva en desarrollo web full stack.",
+            "technologies": "JavaScript, React, Node.js, Express, PostgreSQL, Git",
+            "achievements": "Desarrollé 3 proyectos completos y obtuve certificación como desarrollador full stack."
+        }
     },
     "projects": {
         "title": "Proyectos",
         "subtitle": "Algunos de mis trabajos más destacados",
-        "viewProject": "Ver Proyecto",
-        "viewCode": "Ver Código",
-        "technologies": "Tecnologías",
-        "description": "Descripción",
-        "features": "Características"
+        "smartQR": {
+            "title": "SmartQR - Sistema de Gestión de Restaurantes",
+            "description": "Aplicación web completa para gestión de restaurantes con sistema de códigos QR, pedidos en tiempo real y panel administrativo."
+        },
+        "techStore": {
+            "title": "TechStore - E-commerce",
+            "description": "Plataforma de comercio electrónico con sistema de autenticación, carrito de compras y pasarela de pagos integrada."
+        },
+        "portfolio": {
+            "title": "Portfolio Personal",
+            "description": "Sitio web personal desarrollado con Next.js, TypeScript y Tailwind CSS, con sistema de internacionalización y formulario de contacto."
+        }
     },
     "contact": {
         "title": "Contacto",

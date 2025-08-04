@@ -7,21 +7,9 @@ export const defaultLocale = "es" as const;
 export type Locale = (typeof locales)[number];
 
 export default getRequestConfig(async ({ locale }) => {
-    if (!locale) {
+    if (!locale || !locales.includes(locale as Locale)) {
         try {
-            const messages = (await import(`../messages/${defaultLocale}.json`)).default;
-            return {
-                locale: defaultLocale,
-                messages,
-            };
-        } catch (error) {
-            notFound();
-        }
-    }
-
-    if (!locales.includes(locale as Locale)) {
-        try {
-            const messages = (await import(`../messages/${defaultLocale}.json`)).default;
+            const messages = (await import(`./messages/${defaultLocale}.json`)).default;
             return {
                 locale: defaultLocale,
                 messages,
@@ -32,14 +20,14 @@ export default getRequestConfig(async ({ locale }) => {
     }
 
     try {
-        const messages = (await import(`../messages/${locale}.json`)).default;
+        const messages = (await import(`./messages/${locale}.json`)).default;
         return {
             locale,
             messages,
         };
     } catch (error) {
         try {
-            const messages = (await import(`../messages/${defaultLocale}.json`)).default;
+            const messages = (await import(`./messages/${defaultLocale}.json`)).default;
             return {
                 locale: defaultLocale,
                 messages,

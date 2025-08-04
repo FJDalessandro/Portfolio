@@ -1,6 +1,19 @@
 @echo off
-echo Limpiando caché de Next.js...
-if exist .next rmdir /s /q .next
-if exist node_modules\.cache rmdir /s /q node_modules\.cache
-echo Caché limpiada exitosamente!
+echo Limpiando proyecto...
+
+echo Eliminando directorio .next...
+if exist ".next" rmdir /s /q ".next"
+
+echo Eliminando directorio node_modules...
+if exist "node_modules" rmdir /s /q "node_modules"
+
+echo Eliminando package-lock.json...
+if exist "package-lock.json" del "package-lock.json"
+
+echo Reinstalando dependencias...
+npm install
+
+echo Iniciando servidor de desarrollo...
+npm run dev
+
 pause 

@@ -2,30 +2,25 @@
 
 import React from "react";
 import Image from "next/image";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/translations/translations";
+import { useTranslations } from "next-intl";
 
 const Projects = () => {
-    const { language } = useLanguage();
-    const t = translations[language];
+    const t = useTranslations("projects");
 
     const projects = [
         {
             id: 1,
-            title: t.projects.smartQR.title,
-            description: t.projects.smartQR.description,
+            title: t("smartQR.title"),
+            description: t("smartQR.description"),
             image: "/logo2.png",
             technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Auth0", "Stripe", "Socket.io", "MapBox"],
             github: "https://github.com/FJDalessandro/SmartQrProject",
             demo: "https://www.smart-qr.tech/",
-            responsibilities: t.projects.smartQR.responsibilities,
-            methodology: t.projects.smartQR.methodology,
-            techStack: t.projects.smartQR.technologies,
         },
         {
             id: 2,
-            title: t.projects.techStore.title,
-            description: t.projects.techStore.description,
+            title: t("techStore.title"),
+            description: t("techStore.description"),
             image: "/Captura de pantalla 2025-07-29 141238.png",
             technologies: ["React", "Node.js", "Express", "PostgreSQL", "Sequelize", "Stripe", "JWT"],
             github: "https://github.com/FJDalessandro/E-commerce",
@@ -33,8 +28,8 @@ const Projects = () => {
         },
         {
             id: 3,
-            title: t.projects.portfolio.title,
-            description: t.projects.portfolio.description,
+            title: t("portfolio.title"),
+            description: t("portfolio.description"),
             image: "/Captura de pantalla 2025-07-29 172255.png",
             technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Formik", "EmailJS"],
             github: "https://github.com/FJDalessandro/Portfolio",
@@ -46,8 +41,8 @@ const Projects = () => {
         <section id="projects" className="py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-white mb-4">{t.projects.title}</h2>
-                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">{t.projects.subtitle}</p>
+                    <h2 className="text-3xl font-bold text-white mb-4">{t("title")}</h2>
+                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">{t("subtitle")}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -58,7 +53,13 @@ const Projects = () => {
                         >
                             {/* Imagen del proyecto */}
                             <div className="relative h-48 overflow-hidden">
-                                <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-300 hover:scale-110" />
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    className="object-cover transition-transform duration-300 hover:scale-110"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
                             </div>
 

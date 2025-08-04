@@ -2,12 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/translations/translations";
+import { useTranslations } from "next-intl";
 
 const AboutMe = () => {
-    const { language } = useLanguage();
-    const t = translations[language];
+    const t = useTranslations("about");
 
     const scrollToProjects = () => {
         const element = document.getElementById("projects");
@@ -49,7 +47,14 @@ const AboutMe = () => {
 
                             {/* Imagen */}
                             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gray-900">
-                                <Image src="/Imagen de WhatsApp 2024-11-14 a las 09.27.01_d4eb0039.jpg" alt="Francisco D'Alessandro" fill className="object-cover" priority />
+                                <Image
+                                    src="/Imagen de WhatsApp 2024-11-14 a las 09.27.01_d4eb0039.jpg"
+                                    alt="Francisco D'Alessandro"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                    sizes="(max-width: 768px) 100vw, 320px"
+                                />
                                 {/* Overlay sutil */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
                             </div>
@@ -63,14 +68,14 @@ const AboutMe = () => {
                     {/* Contenido */}
                     <div className="space-y-8">
                         <div>
-                            <h1 className="text-4xl font-bold text-white mb-4">{t.about.title}</h1>
-                            <h2 className="text-2xl font-semibold text-cyan-400 mb-6">{t.about.subtitle}</h2>
-                            <p className="text-lg text-gray-300 leading-relaxed">{t.about.description}</p>
+                            <h1 className="text-4xl font-bold text-white mb-4">{t("title")}</h1>
+                            <h2 className="text-2xl font-semibold text-cyan-400 mb-6">{t("subtitle")}</h2>
+                            <p className="text-lg text-gray-300 leading-relaxed">{t("description")}</p>
                         </div>
 
                         {/* Habilidades */}
                         <div>
-                            <h3 className="text-xl font-semibold text-white mb-4">{t.about.skills}</h3>
+                            <h3 className="text-xl font-semibold text-white mb-4">{t("skills")}</h3>
                             <div className="flex flex-wrap gap-2">
                                 {skills.map((skill, index) => (
                                     <span
@@ -89,7 +94,7 @@ const AboutMe = () => {
                                 onClick={scrollToProjects}
                                 className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-300"
                             >
-                                {t.about.viewProjects}
+                                {t("viewProjects")}
                             </button>
                             <a
                                 href="/CV_Francisco_DAlessandr.pdf"
@@ -97,7 +102,7 @@ const AboutMe = () => {
                                 rel="noopener noreferrer"
                                 className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-300 text-center"
                             >
-                                {t.about.downloadCV}
+                                {t("downloadCV")}
                             </a>
                         </div>
                     </div>

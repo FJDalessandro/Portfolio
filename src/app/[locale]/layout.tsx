@@ -4,43 +4,42 @@ import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { locales, type Locale } from "../../../src/i18n/request";
+import { locales, defaultLocale, type Locale } from "../../i18n";
 import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Francisco D'Alessandro - Full Stack Developer",
-    description: "Portfolio personal de Francisco D'Alessandro, desarrollador Full Stack especializado en React, Node.js y Python.",
-    keywords: ["desarrollador", "full stack", "react", "node.js", "python", "portfolio"],
+    title: "Francisco D'Alessandro - Portfolio",
+    description: "Desarrollador Full Stack especializado en React, Node.js y tecnologías modernas",
+    keywords: ["desarrollador", "full stack", "react", "node.js", "typescript", "portfolio"],
     authors: [{ name: "Francisco D'Alessandro" }],
     creator: "Francisco D'Alessandro",
+    publisher: "Francisco D'Alessandro",
+    robots: "index, follow",
     openGraph: {
-        title: "Francisco D'Alessandro - Full Stack Developer",
-        description: "Portfolio personal de Francisco D'Alessandro, desarrollador Full Stack.",
         type: "website",
         locale: "es_ES",
+        url: "https://francisco-dalessandro.vercel.app",
+        title: "Francisco D'Alessandro - Portfolio",
+        description: "Desarrollador Full Stack especializado en React, Node.js y tecnologías modernas",
         siteName: "Francisco D'Alessandro Portfolio",
+        images: [
+            {
+                url: "/logo2.png",
+                width: 1200,
+                height: 630,
+                alt: "Francisco D'Alessandro Portfolio",
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Francisco D'Alessandro - Full Stack Developer",
-        description: "Portfolio personal de Francisco D'Alessandro, desarrollador Full Stack.",
+        title: "Francisco D'Alessandro - Portfolio",
+        description: "Desarrollador Full Stack especializado en React, Node.js y tecnologías modernas",
+        images: ["/logo2.png"],
     },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            "index": true,
-            "follow": true,
-            "max-video-preview": -1,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-        },
-    },
-    verification: {
-        google: "your-google-verification-code",
-    },
+    manifest: "/manifest.json",
 };
 
 interface RootLayoutProps {
@@ -49,39 +48,49 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
-    const { locale } = await params;
-    // Validar que el locale sea soportado
-    if (!locales.includes(locale as Locale)) {
-        notFound();
-    }
+    try {
+        const { locale } = await params;
 
-    // Obtener los mensajes para el locale
-    const messages = await getMessages();
+        // Validar que el locale sea soportado
+        if (!locale || !locales.includes(locale as Locale)) {
+            notFound();
+        }
 
-    return (
-        <html lang={locale} suppressHydrationWarning>
-            <body className={inter.className}>
-                <NextIntlClientProvider messages={messages}>
-                    <div className="relative min-h-screen">
-                        {/* Fondo global para toda la página */}
-                        <div className="fixed inset-0 z-0">
-                            <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-90"></div>
-                            <div className="absolute inset-0 bg-[url('/desktop-bg.svg')] bg-cover bg-center bg-no-repeat opacity-30"></div>
-                        </div>
+        // Obtener los mensajes para el locale
+        let messages;
+        try {
+            messages = await getMessages({ locale });
+        } catch (error) {
+            // Intentar cargar mensajes por defecto
+            try {
+                messages = await getMessages({ locale: defaultLocale });
+            } catch (fallbackError) {
+                notFound();
+            }
+        }
 
-                        {/* Contenido */}
-                        <div className="relative z-10">
+        return (
+            <html lang={locale}>
+                <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="theme-color" content="#0ea5e9" />
+                </head>
+                <body className={inter.className}>
+                    <NextIntlClientProvider messages={messages}>
+                        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
                             <Navbar />
-                            {children}
+                            <main>{children}</main>
                         </div>
-                    </div>
-                </NextIntlClientProvider>
-            </body>
-        </html>
-    );
+                    </NextIntlClientProvider>
+                </body>
+            </html>
+        );
+    } catch (error) {
+        throw error;
+    }
 }
 
 // Generar rutas estáticas para todos los locales
-export function generateStaticParams() {
+export async function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }

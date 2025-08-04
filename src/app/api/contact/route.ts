@@ -105,7 +105,6 @@ export async function POST(request: NextRequest) {
 
         // Verificar que las variables de entorno estén configuradas
         if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_USER_ID) {
-            console.error("EmailJS credentials not configured");
             return NextResponse.json({ error: "Error de configuración del servidor" }, { status: 500 });
         }
 
@@ -124,13 +123,8 @@ export async function POST(request: NextRequest) {
             privateKey: process.env.EMAILJS_PRIVATE_KEY, // Usar private key para mayor seguridad
         });
 
-        // Log del envío exitoso (sin datos sensibles)
-        console.log(`Email enviado exitosamente desde IP: ${ip}`);
-
         return NextResponse.json({ message: "Mensaje enviado exitosamente" }, { status: 200 });
     } catch (error: unknown) {
-        console.error("Error en API de contacto:", error);
-
         // No exponer detalles del error al cliente
         return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 });
     }

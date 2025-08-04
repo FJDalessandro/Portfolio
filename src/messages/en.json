@@ -15,39 +15,54 @@
         "scroll": "Scroll to explore"
     },
     "about": {
-        "title": "About Me",
-        "subtitle": "Learn about my story and passion for development",
-        "description": "I'm a Full Stack developer passionate about creating innovative technological solutions. With experience in modern technologies like React, Node.js, and Python, I specialize in building scalable web applications and exceptional user experiences.",
+        "title": "Francisco José D'Alessandro",
+        "subtitle": "Full Stack Developer",
+        "description": "I am a Full Stack developer with intensive training in web development. My approach focuses on problem-solving, agile learning, logical thinking, and autonomy in both Frontend and Backend development. I use technologies like React, Next.js, TypeScript, Node.js, Nest.js, and MongoDB. My proactive attitude, effective communication, teamwork, and experience as a Teacher Assistant allow me to develop real-world projects, implement automated testing, design software architectures, and perform production deployments.",
         "skills": "Technical Skills",
-        "skillsDescription": "Technologies and tools I use to create digital solutions",
-        "frontend": "Frontend",
-        "backend": "Backend",
-        "database": "Database",
-        "tools": "Tools",
-        "languages": "Languages",
-        "spanish": "Spanish",
-        "english": "English",
-        "spanishLevel": "Native",
-        "englishLevel": "Advanced"
+        "viewProjects": "View Projects",
+        "downloadCV": "Download CV"
     },
     "experience": {
         "title": "Experience",
         "subtitle": "My professional journey and achievements",
-        "current": "Current",
-        "present": "Present",
-        "months": "months",
-        "years": "years",
-        "year": "year",
-        "month": "month"
+        "downloadFullCV": "Download Full CV",
+        "sipma": {
+            "title": "Full Stack Developer - SIPMA",
+            "period": "January 2024 - Present",
+            "description": "Development of complete web applications using modern technologies.",
+            "technologies": "React, Node.js, TypeScript, MongoDB, Express",
+            "achievements": "Implemented new features that improved system efficiency by 40%."
+        },
+        "henry": {
+            "title": "Teacher Assistant - Henry",
+            "period": "September 2023 - December 2023",
+            "description": "Assistance in teaching web development and programming.",
+            "technologies": "JavaScript, React, Node.js, Express, PostgreSQL",
+            "achievements": "Helped more than 50 students successfully complete the bootcamp."
+        },
+        "bootcamp": {
+            "title": "Full Stack Bootcamp - Henry",
+            "period": "March 2023 - September 2023",
+            "description": "Intensive training in full stack web development.",
+            "technologies": "JavaScript, React, Node.js, Express, PostgreSQL, Git",
+            "achievements": "Developed 3 complete projects and obtained full stack developer certification."
+        }
     },
     "projects": {
         "title": "Projects",
         "subtitle": "Some of my most outstanding works",
-        "viewProject": "View Project",
-        "viewCode": "View Code",
-        "technologies": "Technologies",
-        "description": "Description",
-        "features": "Features"
+        "smartQR": {
+            "title": "SmartQR - Restaurant Management System",
+            "description": "Complete web application for restaurant management with QR code system, real-time orders, and administrative panel."
+        },
+        "techStore": {
+            "title": "TechStore - E-commerce",
+            "description": "E-commerce platform with authentication system, shopping cart, and integrated payment gateway."
+        },
+        "portfolio": {
+            "title": "Personal Portfolio",
+            "description": "Personal website developed with Next.js, TypeScript, and Tailwind CSS, with internationalization system and contact form."
+        }
     },
     "contact": {
         "title": "Contact",
@@ -98,9 +113,6 @@
         "cancel": "Cancel",
         "edit": "Edit",
         "delete": "Delete",
-        "back": "Back",
-        "next": "Next",
-        "previous": "Previous",
         "language": "Language"
     }
 }

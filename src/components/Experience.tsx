@@ -1,37 +1,35 @@
 "use client";
 
 import React from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/translations/translations";
+import { useTranslations } from "next-intl";
 
 const Experience = () => {
-    const { language } = useLanguage();
-    const t = translations[language];
+    const t = useTranslations("experience");
 
     const experiences = [
         {
             id: 1,
-            title: t.experience.sipma.title,
-            period: t.experience.sipma.period,
-            description: t.experience.sipma.description,
-            technologies: t.experience.sipma.technologies,
-            achievements: t.experience.sipma.achievements,
+            title: t("sipma.title"),
+            period: t("sipma.period"),
+            description: t("sipma.description"),
+            technologies: t("sipma.technologies"),
+            achievements: t("sipma.achievements"),
         },
         {
             id: 2,
-            title: t.experience.henry.title,
-            period: t.experience.henry.period,
-            description: t.experience.henry.description,
-            technologies: t.experience.henry.technologies,
-            achievements: t.experience.henry.achievements,
+            title: t("henry.title"),
+            period: t("henry.period"),
+            description: t("henry.description"),
+            technologies: t("henry.technologies"),
+            achievements: t("henry.achievements"),
         },
         {
             id: 3,
-            title: t.experience.bootcamp.title,
-            period: t.experience.bootcamp.period,
-            description: t.experience.bootcamp.description,
-            technologies: t.experience.bootcamp.technologies,
-            achievements: t.experience.bootcamp.achievements,
+            title: t("bootcamp.title"),
+            period: t("bootcamp.period"),
+            description: t("bootcamp.description"),
+            technologies: t("bootcamp.technologies"),
+            achievements: t("bootcamp.achievements"),
         },
     ];
 
@@ -39,8 +37,8 @@ const Experience = () => {
         <section id="experience" className="py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-white mb-4">{t.experience.title}</h2>
-                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">{t.experience.subtitle}</p>
+                    <h2 className="text-3xl font-bold text-white mb-4">{t("title")}</h2>
+                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">{t("subtitle")}</p>
                 </div>
 
                 <div className="relative">
@@ -95,7 +93,7 @@ const Experience = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-300"
                     >
-                        {t.experience.downloadFullCV}
+                        {t("downloadFullCV")}
                     </a>
                 </div>
             </div>
