@@ -28,7 +28,7 @@
         "downloadFullCV": "Download Full CV",
         "sipma": {
             "title": "Full Stack Developer - SIPMA",
-            "period": "January 2024 - Present",
+            "period": "January 2024 - November 2025",
             "description": "Development of complete web applications using modern technologies.",
             "technologies": "React, Node.js, TypeScript, MongoDB, Express",
             "achievements": "Implemented new features that improved system efficiency by 40%."
@@ -62,6 +62,10 @@
         "portfolio": {
             "title": "Personal Portfolio",
             "description": "Personal website developed with Next.js, TypeScript, and Tailwind CSS, with internationalization system and contact form."
+        },
+        "sipma": {
+            "title": "SIPMA - Infrastructure Project Management",
+            "description": "SIPMA is a platform for infrastructure and construction companies that automates project management, control and tracking, reducing time, cost overruns and risks. It simplifies administration from planning to project closure with full transparency and control. In this project I worked on custom JavaScript and HTML plugins embedded into Bubble, as well as configuring workflows and views directly inside the platform."
         }
     },
     "contact": {

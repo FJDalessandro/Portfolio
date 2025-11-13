@@ -35,6 +35,15 @@ const Projects = () => {
             github: "https://github.com/FJDalessandro/Portfolio",
             demo: "https://portfolio-ruby-one-57.vercel.app/",
         },
+        {
+            id: 4,
+            title: t("sipma.title"),
+            description: t("sipma.description"),
+            image: "/sipma.png",
+            technologies: ["JavaScript", "HTML", "Bubble", "Scrum"],
+            github: "",
+            demo: "https://sipma.pro/",
+        },
     ];
 
     return (
