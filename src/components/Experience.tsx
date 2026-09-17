@@ -46,7 +46,7 @@ const Experience = () => {
                     <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-cyan-400"></div>
 
                     <div className="space-y-12">
-                        {experiences.map((experience, index) => (
+                        {experiences.map((experience) => (
                             <div key={experience.id} className="relative flex items-start">
                                 {/* Círculo de la línea de tiempo */}
                                 <div className="absolute left-6 w-4 h-4 bg-cyan-600 rounded-full border-4 border-gray-900 z-10"></div>
@@ -88,7 +88,7 @@ const Experience = () => {
                 {/* Botón para descargar CV completo */}
                 <div className="text-center mt-12">
                     <a
-                        href="/CV_Francisco_DAlessandr.pdf"
+                        href="/Francisco_DAlessandro_CV.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-300"

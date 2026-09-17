@@ -14,7 +14,7 @@ export default getRequestConfig(async ({ locale }) => {
                 locale: defaultLocale,
                 messages,
             };
-        } catch (error) {
+        } catch {
             notFound();
         }
     }
@@ -25,14 +25,14 @@ export default getRequestConfig(async ({ locale }) => {
             locale,
             messages,
         };
-    } catch (error) {
+    } catch {
         try {
             const messages = (await import(`./messages/${defaultLocale}.json`)).default;
             return {
                 locale: defaultLocale,
                 messages,
             };
-        } catch (fallbackError) {
+        } catch {
             notFound();
         }
     }

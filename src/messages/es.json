@@ -4,7 +4,8 @@
         "about": "Sobre mí",
         "experience": "Experiencia",
         "projects": "Proyectos",
-        "contact": "Contacto"
+        "contact": "Contacto",
+        "openMenu": "Abrir menú principal"
     },
     "hero": {
         "greeting": "¡Hola! Soy",
@@ -51,6 +52,10 @@
     "projects": {
         "title": "Proyectos",
         "subtitle": "Algunos de mis trabajos más destacados",
+        "myBalance": {
+            "title": "My-Balance - Gestión Financiera Personal",
+            "description": "My-Balance es una aplicación Full Stack de gestión financiera personal diseñada para centralizar y visualizar las finanzas del usuario. Permite gestionar gastos e ingresos, nóminas, importaciones bancarias, ahorros y deudas, además de generar reportes y predicciones financieras. La plataforma cuenta con autenticación segura, gestión de documentos y una interfaz responsive orientada a ofrecer una visión clara y completa de la situación financiera."
+        },
         "smartQR": {
             "title": "SmartQR - Sistema de Gestión de Restaurantes",
             "description": "Aplicación web completa para gestión de restaurantes con sistema de códigos QR, pedidos en tiempo real y panel administrativo."
@@ -95,12 +100,18 @@
         "validation": {
             "nameRequired": "El nombre es requerido",
             "nameMin": "El nombre debe tener al menos 2 caracteres",
+            "nameMax": "El nombre no puede exceder 100 caracteres",
+            "namePattern": "El nombre solo puede contener letras y espacios",
             "emailRequired": "El email es requerido",
             "emailInvalid": "Email inválido",
+            "emailMax": "El email no puede exceder 254 caracteres",
             "subjectRequired": "El asunto es requerido",
             "subjectMin": "El asunto debe tener al menos 5 caracteres",
+            "subjectMax": "El asunto no puede exceder 200 caracteres",
+            "subjectPattern": "El asunto contiene caracteres no permitidos",
             "messageRequired": "El mensaje es requerido",
-            "messageMin": "El mensaje debe tener al menos 10 caracteres"
+            "messageMin": "El mensaje debe tener al menos 10 caracteres",
+            "messageMax": "El mensaje no puede exceder 2000 caracteres"
         }
     },
     "footer": {

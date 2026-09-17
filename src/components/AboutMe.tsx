@@ -97,7 +97,7 @@ const AboutMe = () => {
                                 {t("viewProjects")}
                             </button>
                             <a
-                                href="/CV_Francisco_DAlessandr.pdf"
+                                href="/Francisco_DAlessandro_CV.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-300 text-center"

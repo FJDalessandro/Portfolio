@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
         });
 
         return NextResponse.json({ message: "Mensaje enviado exitosamente" }, { status: 200 });
-    } catch (error: unknown) {
+    } catch {
         // No exponer detalles del error al cliente
         return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 });
     }

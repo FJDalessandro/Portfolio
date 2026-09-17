@@ -1,11 +1,10 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { locales, type Locale } from "../i18n";
 
 const LanguageToggle = () => {
-    const locale = useLocale();
     const router = useRouter();
     const pathname = usePathname();
     const t = useTranslations("common");
@@ -35,7 +34,7 @@ const LanguageToggle = () => {
         // Usar router.push para navegación del lado del cliente
         try {
             router.push(newPath);
-        } catch (error) {
+        } catch {
             // Fallback a window.location si router falla
             window.location.href = newPath;
         }

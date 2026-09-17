@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://francisco-dalessandro.vercel.app"),
     title: "Francisco D'Alessandro - Portfolio",
     description: "Desarrollador Full Stack especializado en React, Node.js y tecnologías modernas",
     keywords: ["desarrollador", "full stack", "react", "node.js", "typescript", "portfolio"],
@@ -17,6 +18,12 @@ export const metadata: Metadata = {
     creator: "Francisco D'Alessandro",
     publisher: "Francisco D'Alessandro",
     robots: "index, follow",
+    alternates: {
+        languages: {
+            es: "/es",
+            en: "/en",
+        },
+    },
     openGraph: {
         type: "website",
         locale: "es_ES",
@@ -42,52 +49,50 @@ export const metadata: Metadata = {
     manifest: "/manifest.json",
 };
 
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#0ea5e9",
+};
+
 interface RootLayoutProps {
     children: React.ReactNode;
     params: Promise<{ locale: string }>;
 }
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
-    try {
-        const { locale } = await params;
+    const { locale } = await params;
 
-        // Validar que el locale sea soportado
-        if (!locale || !locales.includes(locale as Locale)) {
+    // Validar que el locale sea soportado
+    if (!locale || !locales.includes(locale as Locale)) {
+        notFound();
+    }
+
+    // Obtener los mensajes para el locale
+    let messages;
+    try {
+        messages = await getMessages({ locale });
+    } catch {
+        // Intentar cargar mensajes por defecto
+        try {
+            messages = await getMessages({ locale: defaultLocale });
+        } catch {
             notFound();
         }
-
-        // Obtener los mensajes para el locale
-        let messages;
-        try {
-            messages = await getMessages({ locale });
-        } catch (error) {
-            // Intentar cargar mensajes por defecto
-            try {
-                messages = await getMessages({ locale: defaultLocale });
-            } catch (fallbackError) {
-                notFound();
-            }
-        }
-
-        return (
-            <html lang={locale}>
-                <head>
-                    <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <meta name="theme-color" content="#0ea5e9" />
-                </head>
-                <body className={inter.className}>
-                    <NextIntlClientProvider messages={messages}>
-                        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
-                            <Navbar />
-                            <main>{children}</main>
-                        </div>
-                    </NextIntlClientProvider>
-                </body>
-            </html>
-        );
-    } catch (error) {
-        throw error;
     }
+
+    return (
+        <html lang={locale}>
+            <body className={inter.className}>
+                <NextIntlClientProvider messages={messages}>
+                    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+                        <Navbar />
+                        <main>{children}</main>
+                    </div>
+                </NextIntlClientProvider>
+            </body>
+        </html>
+    );
 }
 
 // Generar rutas estáticas para todos los locales

@@ -4,7 +4,8 @@
         "about": "About",
         "experience": "Experience",
         "projects": "Projects",
-        "contact": "Contact"
+        "contact": "Contact",
+        "openMenu": "Open main menu"
     },
     "hero": {
         "greeting": "Hello! I'm",
@@ -51,6 +52,10 @@
     "projects": {
         "title": "Projects",
         "subtitle": "Some of my most outstanding works",
+        "myBalance": {
+            "title": "My-Balance - Personal Finance Management",
+            "description": "My-Balance is a Full Stack personal finance management application designed to centralize and visualize the user's finances. It allows users to manage expenses and income, payrolls, bank imports, savings and debts, as well as generate financial reports and predictions. The platform includes secure authentication, document management and a responsive interface designed to provide a clear and comprehensive view of the user's financial situation."
+        },
         "smartQR": {
             "title": "SmartQR - Restaurant Management System",
             "description": "Complete web application for restaurant management with QR code system, real-time orders, and administrative panel."
@@ -95,12 +100,18 @@
         "validation": {
             "nameRequired": "Name is required",
             "nameMin": "Name must be at least 2 characters",
+            "nameMax": "Name must not exceed 100 characters",
+            "namePattern": "Name can only contain letters and spaces",
             "emailRequired": "Email is required",
             "emailInvalid": "Invalid email",
+            "emailMax": "Email must not exceed 254 characters",
             "subjectRequired": "Subject is required",
             "subjectMin": "Subject must be at least 5 characters",
+            "subjectMax": "Subject must not exceed 200 characters",
+            "subjectPattern": "Subject contains characters that are not allowed",
             "messageRequired": "Message is required",
-            "messageMin": "Message must be at least 10 characters"
+            "messageMin": "Message must be at least 10 characters",
+            "messageMax": "Message must not exceed 2000 characters"
         }
     },
     "footer": {

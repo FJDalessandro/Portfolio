@@ -11,10 +11,18 @@ const Contact = () => {
     const t = useTranslations("contact");
 
     const validationSchema = Yup.object({
-        name: Yup.string().min(2, t("validation.nameMin")).required(t("validation.nameRequired")),
-        email: Yup.string().email(t("validation.emailInvalid")).required(t("validation.emailRequired")),
-        subject: Yup.string().min(5, t("validation.subjectMin")).required(t("validation.subjectRequired")),
-        message: Yup.string().min(10, t("validation.messageMin")).required(t("validation.messageRequired")),
+        name: Yup.string()
+            .min(2, t("validation.nameMin"))
+            .max(100, t("validation.nameMax"))
+            .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, t("validation.namePattern"))
+            .required(t("validation.nameRequired")),
+        email: Yup.string().email(t("validation.emailInvalid")).max(254, t("validation.emailMax")).required(t("validation.emailRequired")),
+        subject: Yup.string()
+            .min(5, t("validation.subjectMin"))
+            .max(200, t("validation.subjectMax"))
+            .matches(/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s\-_.,!?()]+$/, t("validation.subjectPattern"))
+            .required(t("validation.subjectRequired")),
+        message: Yup.string().min(10, t("validation.messageMin")).max(2000, t("validation.messageMax")).required(t("validation.messageRequired")),
     });
 
     const handleSubmit = async (
@@ -50,7 +58,7 @@ const Contact = () => {
                 setSubmitStatus("error");
                 setSubmitMessage(data.error || t("form.error"));
             }
-        } catch (error) {
+        } catch {
             setSubmitStatus("error");
             setSubmitMessage(t("form.error"));
         } finally {
@@ -142,12 +150,12 @@ const Contact = () => {
                                 <div>
                                     <h4 className="font-semibold text-white">GitHub</h4>
                                     <a
-                                        href="https://github.com/francisco-dalessandro"
+                                        href="https://github.com/FJDalessandro"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-cyan-400 hover:text-cyan-300 transition-colors"
                                     >
-                                        /francisco-dalessandro
+                                        /FJDalessandro
                                     </a>
                                 </div>
                             </div>
@@ -160,7 +168,11 @@ const Contact = () => {
                             {({ isSubmitting }) => (
                                 <Form className="space-y-6">
                                     <div>
+                                        <label htmlFor="contact-name" className="sr-only">
+                                            {t("form.name")}
+                                        </label>
                                         <Field
+                                            id="contact-name"
                                             type="text"
                                             name="name"
                                             placeholder={t("form.namePlaceholder")}
@@ -170,7 +182,11 @@ const Contact = () => {
                                     </div>
 
                                     <div>
+                                        <label htmlFor="contact-email" className="sr-only">
+                                            {t("form.email")}
+                                        </label>
                                         <Field
+                                            id="contact-email"
                                             type="email"
                                             name="email"
                                             placeholder={t("form.emailPlaceholder")}
@@ -180,7 +196,11 @@ const Contact = () => {
                                     </div>
 
                                     <div>
+                                        <label htmlFor="contact-subject" className="sr-only">
+                                            {t("form.subject")}
+                                        </label>
                                         <Field
+                                            id="contact-subject"
                                             type="text"
                                             name="subject"
                                             placeholder={t("form.subjectPlaceholder")}
@@ -190,8 +210,12 @@ const Contact = () => {
                                     </div>
 
                                     <div>
+                                        <label htmlFor="contact-message" className="sr-only">
+                                            {t("form.message")}
+                                        </label>
                                         <Field
                                             as="textarea"
+                                            id="contact-message"
                                             name="message"
                                             rows={6}
                                             placeholder={t("form.messagePlaceholder")}

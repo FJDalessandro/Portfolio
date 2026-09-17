@@ -9,6 +9,15 @@ const Projects = () => {
 
     const projects = [
         {
+            id: 5,
+            title: t("myBalance.title"),
+            description: t("myBalance.description"),
+            image: "/My-Balance.png",
+            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "NestJS", "Prisma", "PostgreSQL"],
+            github: "",
+            demo: "",
+        },
+        {
             id: 1,
             title: t("smartQR.title"),
             description: t("smartQR.description"),
@@ -88,22 +97,26 @@ const Projects = () => {
 
                                 {/* Enlaces */}
                                 <div className="flex gap-3">
-                                    <a
-                                        href={project.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex-1 px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-lg hover:bg-gray-600 transition-colors text-center"
-                                    >
-                                        GitHub
-                                    </a>
-                                    <a
-                                        href={project.demo}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex-1 px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-700 transition-colors text-center"
-                                    >
-                                        Demo
-                                    </a>
+                                    {project.github && (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex-1 px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-lg hover:bg-gray-600 transition-colors text-center"
+                                        >
+                                            GitHub
+                                        </a>
+                                    )}
+                                    {project.demo && (
+                                        <a
+                                            href={project.demo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex-1 px-4 py-2 bg-cyan-600 text-white text-sm font-medium rounded-lg hover:bg-cyan-700 transition-colors text-center"
+                                        >
+                                            Demo
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>
