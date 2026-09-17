@@ -64,10 +64,6 @@
             "title": "TechStore - E-commerce",
             "description": "Plataforma de comercio electrónico con sistema de autenticación, carrito de compras y pasarela de pagos integrada."
         },
-        "portfolio": {
-            "title": "Portfolio Personal",
-            "description": "Sitio web personal desarrollado con Next.js, TypeScript y Tailwind CSS, con sistema de internacionalización y formulario de contacto."
-        },
         "sipma": {
             "title": "SIPMA - Gestión de Proyectos de Infraestructura",
             "description": "SIPMA es una plataforma para empresas de infraestructura y construcción que automatiza la gestión, el control y el seguimiento de cada proyecto, reduciendo tiempos, sobrecostos y riesgos. Simplifica la administración desde la planificación hasta el cierre, con total transparencia y control. En este proyecto trabajé desarrollando plugins personalizados en JavaScript y HTML embebidos para integrarlos en Bubble, además de configurar flujos y vistas directamente dentro de la plataforma."

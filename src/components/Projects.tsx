@@ -36,15 +36,6 @@ const Projects = () => {
             demo: "https://e-commerce-ochre-two.vercel.app/",
         },
         {
-            id: 3,
-            title: t("portfolio.title"),
-            description: t("portfolio.description"),
-            image: "/Captura de pantalla 2025-07-29 172255.png",
-            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Formik", "EmailJS"],
-            github: "https://github.com/FJDalessandro/Portfolio",
-            demo: "https://portfolio-ruby-one-57.vercel.app/",
-        },
-        {
             id: 4,
             title: t("sipma.title"),
             description: t("sipma.description"),
